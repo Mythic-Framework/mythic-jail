@@ -17,6 +17,7 @@ function RetrieveComponents()
 	Loans = exports["mythic-base"]:FetchComponent("Loans")
 	Jail = exports["mythic-base"]:FetchComponent("Jail")
 	Pwnzor = exports["mythic-base"]:FetchComponent("Pwnzor")
+	Version = exports["mythic-base"]:FetchComponent("Version")
 end
 
 AddEventHandler("Core:Shared:Ready", function()
@@ -38,6 +39,7 @@ AddEventHandler("Core:Shared:Ready", function()
 		"Loans",
 		"Jail",
 		"Pwnzor",
+		"Version",
 	}, function(error)
 		if #error > 0 then
 			return
@@ -46,6 +48,8 @@ AddEventHandler("Core:Shared:Ready", function()
 		RegisterCommands()
 		RegisterCallbacks()
 		RegisterMiddleware()
+
+		Version:Check('Mythic-Framework/Mythic-VersionCheckers', GetCurrentResourceName())
 	end)
 end)
 
